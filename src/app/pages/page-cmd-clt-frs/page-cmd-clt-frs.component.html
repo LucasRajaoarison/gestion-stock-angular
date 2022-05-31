@@ -1,0 +1,51 @@
+<div class="col">
+  <div class="row m-3">
+    <div class="col-md-8 p-0">
+      <h1>Commande {{origin}}</h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <app-boutton-action (clickEvent)="nouvelleCommande()" [isImporterVisible]="false">
+      </app-boutton-action>
+    </div>
+  </div>
+  <div class="col m-3">
+    <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
+      <ngb-panel class="mb-5">
+        <ng-template ngbPanelHeader>
+          <button ngbPanelToggle class="accordion-button btn btn-link btn-block text-left">
+           <app-detail-cmd-clt-frs></app-detail-cmd-clt-frs>
+          </button>
+          <div class="card-footer mt-2">
+            <div class="row">
+              <div class="col-md-6 text-left">
+                <h5> 12 articles commandes </h5>
+              </div>
+              <div class="col-md-6 text-right">
+                <h5> Total commande : 123,69 </h5>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template ngbPanelContent  >
+          <div class="custom-scroll">
+            <app-detail-cmd></app-detail-cmd>
+            <app-detail-cmd></app-detail-cmd>
+            <app-detail-cmd></app-detail-cmd>
+            <app-detail-cmd></app-detail-cmd>
+            <app-detail-cmd></app-detail-cmd>
+            <app-detail-cmd></app-detail-cmd>
+            <app-detail-cmd></app-detail-cmd>
+          </div>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-12 text-center">
+      <app-pagination></app-pagination>
+    </div>
+  </div>
+
+</div>

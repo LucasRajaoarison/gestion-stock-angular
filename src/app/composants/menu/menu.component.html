@@ -1,0 +1,24 @@
+<ngb-accordion [closeOthers]="true" activeIds="static-1">
+
+  <ngb-panel *ngFor = "let menu of menuProperties">
+
+    <ng-template  id="" class="btn btn-link btn-block text-left" ngbPanelTitle  >
+                <span><i class ="{{menu.icon}}" ></i>&nbsp;
+                  {{menu.titre}}</span>
+    </ng-template>
+
+    <ng-template aria-labelledby=""  ngbPanelContent>
+      <div class ="">
+          <ul class = "list-group list-group-flush" *ngFor = "let sousMenu of menu.sousMenu">
+            <li class="list-group-item" [ngClass]="{'text-white bg-primary': sousMenu.active, '': !sousMenu.active }">
+              <a href="javascript:void(0);" (click) = "navigate(sousMenu)" style="color: inherit;">
+                <i class ="{{sousMenu.icon}}" ></i>&nbsp; {{sousMenu.titre}}
+              </a>
+            </li>
+          </ul>
+      </div>
+
+    </ng-template>
+  </ngb-panel>
+
+</ngb-accordion>

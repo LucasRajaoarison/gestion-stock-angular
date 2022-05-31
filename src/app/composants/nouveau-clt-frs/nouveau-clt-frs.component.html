@@ -1,0 +1,144 @@
+<div class="col mb-3">
+  <div class="col-md-12 mt-3 mb-3">
+    <img src="assets/IronMan.jpg" class="rounded-circle" width="150px" height="150px">
+  </div>
+  <hr>
+  <div class="col-md-12">
+    <div class="col-md-12 mb-3">
+      <h2><i class="fas fa-info-circle blue-color"></i> &nbsp;Information du {{origin}}</h2>
+    </div>
+    <div class="col-md-12">
+      <form  [formGroup]="nouveauCltFrsFormGroup!" (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+            <div class="col">
+              <input formControlName="nom" type="text" class="form-control mb-1" placeholder="Nom">
+              <div *ngIf="nom?.invalid && (nom?.dirty || nom?.touched)" class="alert alert-danger">
+
+                <div *ngIf="nom?.errors?.['required'] || nom?.errors?.['notOnlyWhitespace']">
+                  Le nom est obligatoire.
+                </div>
+                <div *ngIf="nom?.errors?.['minlength']">
+                  Le nom doit avoir au moins 2 caractere.
+                </div>
+
+              </div>
+            </div>
+            <div formGroupName="adresse" class="col">
+              <input formControlName="adresse1"  type="text" class="form-control mb-1" placeholder="Adresse 1">
+              <div *ngIf="adresse1?.invalid && (adresse1?.dirty || adresse1?.touched)" class="alert alert-danger">
+
+                <div *ngIf="adresse1?.errors?.['required'] || adresse1?.errors?.['notOnlyWhitespace']">
+                  L'adresse 1 est obligatoire.
+                </div>
+                <div *ngIf="adresse1?.errors?.['minlength']">
+                  L'adresse 1 doit avoir au moins 2 caractere.
+                </div>
+
+              </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+              <input formControlName="prenom"  type="text" class="form-control mb-1" placeholder="Prenom">
+              <div *ngIf="prenom?.invalid && (prenom?.dirty || prenom?.touched)" class="alert alert-danger">
+
+                <div *ngIf="prenom?.errors?.['required'] || prenom?.errors?.['notOnlyWhitespace']">
+                  Le prenom 1 est obligatoire.
+                </div>
+                <div *ngIf="prenom?.errors?.['minlength']">
+                  Le prenom 1 doit avoir au moins 2 caractere.
+                </div>
+
+              </div>
+            </div>
+            <div formGroupName="adresse" class="col">
+              <input formControlName="adresse2"  type="text" class="form-control mb-1" placeholder="Adresse 2">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+              <input formControlName="mail"  type="text" class="form-control mb-1" placeholder="E-mail">
+              <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger">
+
+                <div *ngIf="email?.errors?.['required'] || email?.errors?.['notOnlyWhitespace']">
+                  L'e-mail est obligatoire.
+                </div>
+                <div *ngIf="email?.errors?.['pattern']">
+                  L'e-mail doit etre une e-mail valide.
+                </div>
+
+              </div>
+            </div>
+            <div formGroupName="adresse" class="col">
+              <input formControlName="ville"  type="text" class="form-control mb-1" placeholder="Ville">
+              <div *ngIf="ville?.invalid && (ville?.dirty || ville?.touched)" class="alert alert-danger">
+
+                <div *ngIf="ville?.errors?.['required'] || ville?.errors?.['notOnlyWhitespace']">
+                  La ville est obligatoire.
+                </div>
+                <div *ngIf="ville?.errors?.['minlength']">
+                  La ville doit avoir au moins 2 caractere.
+                </div>
+
+              </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+              <input formControlName="numTel"  type="text" class="form-control mb-1" placeholder="Telephone">
+              <div *ngIf="telephone?.invalid && (telephone?.dirty || telephone?.touched)" class="alert alert-danger">
+
+                <div *ngIf="telephone?.errors?.['required'] || telephone?.errors?.['notOnlyWhitespace']">
+                  Le numero de telephone est obligatoire.
+                </div>
+                <div *ngIf="ville?.errors?.['minlength']">
+                  Le numero de telephone doit avoir au moins 2 caractere.
+                </div>
+
+              </div>
+            </div>
+            <div formGroupName="adresse" class="col">
+              <input formControlName="codePostal"  type="text" class="form-control mb-1" placeholder="Code postal">
+              <div *ngIf="codePostal?.invalid && (codePostal?.dirty || codePostal?.touched)" class="alert alert-danger">
+
+                <div *ngIf="codePostal?.errors?.['required'] || codePostal?.errors?.['notOnlyWhitespace']">
+                  Le code postal est obligatoire.
+                </div>
+                <div *ngIf="codePostal?.errors?.['minlength']">
+                  Le code postal doit avoir au moins 2 caractere.
+                </div>
+
+              </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+          &nbsp;
+        </div>
+          <div formGroupName="adresse" class="col">
+            <input formControlName="pays"  type="text" class="form-control mb-1" placeholder="Pays">
+            <div *ngIf="pays?.invalid && (codePostal?.dirty || pays?.touched)" class="alert alert-danger">
+
+              <div *ngIf="pays?.errors?.['required'] || pays?.errors?.['notOnlyWhitespace']">
+                Le pays est obligatoire.
+              </div>
+              <div *ngIf="pays?.errors?.['minlength']">
+                Le pays doit avoir au moins 2 caractere.
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 text-right">
+          <button class="btn btn-danger mr-3" (click)="cancelClick()">
+            <i class="fas fa-ban"></i>&nbsp;Annuler
+          </button>
+          <button class="btn btn-primary">
+            <i class="fas fa-save"></i>&nbsp;Enregistrer
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,116 @@
+<div class="col mb-3">
+    <div class="col-md-12 mt-3 mb-3">
+      <button (click)="fileInput.click()" style="background-color: transparent; border: none">
+        <img [src]="imagUrl" class="rounded-circle" width="150px" height="150px">
+        <input hidden type="file" #fileInput (change)="onFileInput(fileInput.files)">
+      </button>
+
+    </div>
+    <hr>
+    <div class="col-md-12">
+        <div class="col-md-12 mb-3">
+            <h2><i class="fas fa-info-circle blue-color"></i> &nbsp;Information de l'article</h2>
+        </div>
+        <div class="col-md-12">
+              <div class="alert alert-danger" *ngIf="mode == 1">
+                  <strong>{{errorMsg}}</strong>
+              </div>
+            <form [formGroup]="nouveauArticleFormGroup!" (ngSubmit)="onSubmit()">
+                <div class="row mb-3">
+                    <div class="col">
+                        <input formControlName="codeArticle" type="text" class="form-control mb-1" placeholder="Code Article">
+                        <div *ngIf="code?.invalid && (code?.dirty || code?.touched)" class="alert alert-danger">
+
+                          <div *ngIf="code?.errors?.['required'] || code?.errors?.['notOnlyWhitespace']">
+                            Le code est obligatoire.
+                          </div>
+                          <div *ngIf="code?.errors?.['minlength']">
+                            Le code doit avoir au moins 2 caractere.
+                          </div>
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input formControlName="designation" type="text" class="form-control mb-1" placeholder="Designation">
+                        <div *ngIf="designation?.invalid && (designation?.dirty || designation?.touched)" class="alert alert-danger">
+
+                          <div *ngIf="designation?.errors?.['required'] || designation?.errors?.['notOnlyWhitespace']">
+                            La designation est obligatoire.
+                          </div>
+                          <div *ngIf="designation?.errors?.['minlength']">
+                            La designation doit avoir au moins 2 caractere.
+                          </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <input formControlName="prixUnitaireHT" type="text" [(ngModel)]="article.prixUnitaireHT" class="form-control mb-1" (input)="calculerTTC()" placeholder="Prix Unitaire HT">
+                        <div *ngIf="prixHT?.invalid && (prixHT?.dirty || prixHT?.touched)" class="alert alert-danger">
+
+                          <div *ngIf="prixHT?.errors?.['required'] || prixHT?.errors?.['pattern']">
+                            Le prixHT est obligatoire.
+                          </div>
+                          <div *ngIf="prixHT?.errors?.['min']">
+                            Le prixHT doit avoir etre superieur a 1.
+                          </div>
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input formControlName="tauxTva" type="text" [(ngModel)]="article.tauxTva" class="form-control mb-1" (input)="calculerTTC()"  placeholder="Taux TVA">
+                        <div *ngIf="taux?.invalid && (taux?.dirty || taux?.touched)" class="alert alert-danger">
+
+                          <div *ngIf="taux?.errors?.['required'] || taux?.errors?.['pattern']">
+                            Le taux est obligatoire.
+                          </div>
+                          <div *ngIf="taux?.errors?.['min']">
+                            Le taux doit avoir etre superieur a 1.
+                          </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <input formControlName="prixUnitaireTTC" [readonly]="!editable" [(ngModel)]="article.prixUnitaireTTC" type="text" class="form-control mb-1" placeholder="Prix Unitaire TTC">
+                        <!--<div *ngIf="prixTTC?.invalid && (prixTTC?.dirty || prixTTC?.touched)" class="alert alert-danger">
+
+                          <div *ngIf="prixTTC?.errors?.['required'] || prixTTC?.errors?.['notOnlyWhitespace']">
+                            Le prixTTC est obligatoire.
+                          </div>
+                          <div *ngIf="prixTTC?.errors?.['min']">
+                            Le prixTTC doit avoir etre superieur a 1.
+                          </div>
+
+                        </div>-->
+                    </div>
+                    <div class="col">
+                        <select formControlName="categorie" class="form-control" [(ngModel)]="categorieDto.id">
+                            <option [value]="null">Selectionner une categorie</option>
+                            <option *ngFor="let cat of AllCategorie" [ngValue]="cat" [value]="cat.id">
+                              {{cat.designation}}
+                            </option>
+                        </select>
+                        <div *ngIf="categ?.invalid && (categ?.dirty || categ?.touched)" class="alert alert-danger">
+                          <div *ngIf="categ?.errors?.['required']">
+                            Le categorie est obligatoire.
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              <div class="col-md-12 text-right">
+                <button class="btn btn-danger mr-3" (click)="cancel()">
+                  <i class="fas fa-ban"></i>&nbsp;Annuler
+                </button>
+                <button type="submit" class="btn btn-primary" [disabled]="!nouveauArticleFormGroup!.valid">
+                  <i class="fas fa-save"></i>&nbsp;Enregistrer
+                </button>
+              </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>

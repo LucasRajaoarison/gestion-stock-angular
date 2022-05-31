@@ -1,0 +1,28 @@
+<div class="container my-container">
+ <div class="card justify-content-md-center">
+  <div class="card-header text-center">
+    <h3>S'authentifier</h3>
+  </div>
+    <div class="card-body">
+      <div class="alert alert-danger" *ngIf="mode==1">
+        <strong>Bad credential...</strong>
+      </div>
+      <form  #f="ngForm" (ngSubmit)="onLogin(f.value)">
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="E-mail" ngModel name="mail">
+        </div>
+        <div class="mb-3">
+          <input type="password" class="form-control"  placeholder="Mot de passe" ngModel name="password">
+        </div>
+        <div class="mb-3 d-flex justify-content-between">
+
+          <!--? Router link permet de metter en place le routage-->
+          <a routerLink = "/inscrire"  class="btn btn-link">S'inscrire</a>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa fa-check"></i>&nbsp; Se Connecter
+            </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
